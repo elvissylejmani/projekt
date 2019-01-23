@@ -1,0 +1,45 @@
+<style>
+html,
+body,
+#map1 {
+height: 100%;
+width: 100%;
+margin: 0px;
+padding: 0px
+}
+</style><script>
+  function avMap() {
+    var myCanvas = document.getElementById('map1');
+    var mapCenter = new google.maps.LatLng(42.321564, 21.362007);
+    var mapOptions = {
+      center: mapCenter,
+      zoom: 11,
+      mapTypeId: google.maps.MapTypeId.ROADMAP //SATELLITE, HYBRID, TERRAIN
+    };
+    var mapAv = new google.maps.Map(myCanvas, mapOptions);
+    var marker1 = new google.maps.Marker({
+      position: mapCenter,
+      animation: google.maps.Animation.BOUNCE,
+      draggable: false
+    });
+    marker1.setMap(mapAv);
+    var marker2 = new google.maps.Marker({
+      position: {
+        lat: 42.463486,
+        lng:21.468315
+      },
+      animation: google.maps.Animation.DROP,
+      draggable: false
+    });
+    marker2.setMap(mapAv);
+    //info-window
+    var avNote = "<p>" + "Viti";
+    var infoWin = new google.maps.InfoWindow({
+      content: avNote,
+      maxWidth: 200
+    });
+    infoWin.open(mapAv, marker1);
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=avMap" async defer></script>
+<div id="map1"></div>

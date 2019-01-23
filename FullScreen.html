@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bibloteka në shtëpi</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  span a{
+color: 	#2F4F4F;
+    text-decoration: none;
+  }
+  span a:hover{
+    color: #A9A9A9;
+  }
+
+</style>
+  </head>
+  <body>
+<div class="wrap">
+  <div id="arrow-left" class="arrow">
+  </div>
+  <div id="slider">
+    <div class="slide slide1">
+      <div class="slide-content">
+        <span><a href="index.html">Ballina</a></span>
+      </div>
+    </div>
+    <div class="slide slide2">
+      <div class="slide-content">
+        <span><a href="TegjithLibrat.html">Të gjitha librat</a> </span>
+      </div>
+    </div>
+    <div class="slide slide3">
+      <div class="slide-content">
+        <span><a href="AudioBooks.html">AudioBook's</a> </span>
+      </div>
+    </div>
+  </div>
+  <div id="arrow-right" class="arrow">
+  </div>
+</div>
+<script>
+  let sliderImages = document.querySelectorAll('.slide'),
+  arrowLeft = document.querySelector('#arrow-left'),
+    arrowRight = document.querySelector('#arrow-right'),
+    current = 0;
+    //clear all   images
+    function reset()
+    {
+      for(let i = 0; i < sliderImages.length; i++)
+      {
+        sliderImages[i].style.display = 'none';
+      }
+    }
+    function startSlide()
+    {
+    reset();
+    sliderImages[0].style.display = 'block';
+    }
+    function slideLeft()
+    {
+      reset();
+      sliderImages[current - 1].style.display = 'block';
+      current--;
+    }
+    function slideRight ()
+    {
+      reset();
+      sliderImages[current + 1].style.display = 'block';
+      current++;
+    }
+arrowLeft.addEventListener('click', function()
+{
+  if (current === 0)
+   {
+    current = sliderImages.length;
+  }
+  slideLeft();
+});
+arrowRight.addEventListener('click', function()
+{
+  if (current === sliderImages.length - 1)
+   {
+sliderImages[0].style.display = 'block';
+current = 0;
+  }
+  else {slideRight(); }
+});
+
+    startSlide();
+</script>
+  </body>
+</html>
